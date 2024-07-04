@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  db:
+    # platform: linux/amd64
+    # container_name: 'db'
+    image: amd64/postgres:13.3
+    # restart: always
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    # volumes:
+    #   - postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: jwtsampleapp
+      POSTGRES_PASSWORD: jwtsampleapp
+      POSTGRES_DB: jwtsampleapp
