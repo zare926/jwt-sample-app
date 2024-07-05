@@ -13,16 +13,13 @@ export type RenewSession = {
 };
 
 export const authenticate = async (
-  session: {
-    refreshToken: string;
-    sessionToken: string;
-  },
-  domain: string
+  sessionToken: string,
+  refreshToken: string
 ) => {
   let newSession: RenewSession;
   const jwtDecodeData = await new Promise((resolve, reject) => {
     jwt.verify(
-      session.sessionToken,
+      sessionToken,
       JWTSecret,
       async (err: VerifyErrors | null, decoded: any) => {
         if (err) {
@@ -33,7 +30,7 @@ export const authenticate = async (
             reject(err);
             return;
           }
-          if (!newSession || !newSession.sessionToken) {
+          if (!newSession) {
             reject(err);
             return;
           }
