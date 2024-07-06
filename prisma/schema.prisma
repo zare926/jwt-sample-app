@@ -29,7 +29,7 @@ model User {
     updated_at DateTime @default(now()) @db.Timestamp(6)
     name String
     email String
-    password String
+    password_hash String
     
     @@unique([email])
 }
